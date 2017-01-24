@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Listings:  <strong><%= @listings.count %></strong></h1>
+
+      <div class="nav">
+        <%= link_to "New", listings_path(:only_new => true) %>
+        <%= link_to "All", listings_path %>
+        <%= link_to "Unvisited", listings_path(:unvisited => true) %>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>State</th>
+            <th>Text</th>
+            <th></th>
+            <th>Search</th>
+            <th>Visited</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @listings.each do |l| %>
+            <tr>
+              <td><%= l.location.titlecase %></td>
+              <td><%= l.state %></td>
+              <td><%= l.text %></td>
+              <td><%= link_to 'go', l, target: '_blank', class: 'btn btn-primary' %></td>
+              <td><%= l.search %></td>
+              <td><%= l.visited %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

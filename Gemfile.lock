@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/jessethebuilder/farm_scrape.git
-  revision: 2089b0b8b8969851d4be1448115b527ec3d7851c
+  revision: ab140e60632e1bc81751885393ccfafaec86e669
   specs:
     farm_scrape (0.1.0)
       capybara
@@ -56,6 +56,11 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
+    autoprefixer-rails (6.7.0)
+      execjs
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     bson (4.2.1)
     builder (3.2.3)
     byebug (9.0.6)
@@ -191,6 +196,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   byebug
   coffee-rails (~> 4.2)
   farm_ruby!
