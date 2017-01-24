@@ -11,6 +11,8 @@ class ListingsController < ApplicationController
       @listings = Listing.where(:seen => false)
     end
 
+    @listings = @listings.order(:created_at => :desc)
+
     @listings.each{ |l| l.update(seen: true) }
   end
 
