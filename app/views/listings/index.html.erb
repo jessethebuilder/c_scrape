@@ -16,6 +16,8 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Minutes ago</th>
+            <th>Page</th>
             <th>Location</th>
             <th>State</th>
             <th>Text</th>
@@ -26,8 +28,11 @@
         </thead>
 
         <tbody>
+          <% t = Time.now %>
           <% @listings.each do |l| %>
             <tr>
+              <td><%= Integer((t - l.created_at) / 60) %></td>
+              <td><%= l.search_page %></td>
               <td><%= l.location.titlecase %></td>
               <td><%= l.state %></td>
               <td><%= l.text %></td>
