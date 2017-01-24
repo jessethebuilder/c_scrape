@@ -140,4 +140,10 @@ test:
       options:
         read:
           mode: :primary
-        max_pool_size: 1
+        max_pool_size: 1  
+production:
+  clients:
+    default:
+      uri:  <%= ENV['MONGODB_URI'] %>
+      options:
+        connect_timeout: 15
