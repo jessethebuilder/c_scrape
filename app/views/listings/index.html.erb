@@ -4,9 +4,13 @@
       <h1>Listings:  <strong><%= @listings.count %></strong></h1>
 
       <div class="nav">
-        <%= link_to "New", listings_path(:only_new => true) %>
-        <%= link_to "All", listings_path %>
-        <%= link_to "Unvisited", listings_path(:unvisited => true) %>
+        <div class="form-group form-inline">
+          <label for="minutes_old" class="control-label">Minutes old: </label>
+          <input id="minutes_old" type="text" class="form-control">
+        </div>
+        <%= link_to "Unseen", listings_path %>
+        <%= link_to "All", listings_path(all: true) %>
+        <%= link_to "Unvisited", listings_path(search: 'visited,false') %>
       </div>
 
       <table class="table table-striped">
@@ -37,3 +41,9 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('#minutes_old').change(function(){
+    window.location = "/listings?minutes_old=" + $(this).val();
+  });
+</script>
