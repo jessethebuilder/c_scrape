@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1>Listings:  <strong><%= @listings.count %></strong></h1>
+      <h1>
+        Listings:  <strong><%= @listings.count %></strong>
+        <small>last pull: <strong id="last_pull">0</strong> minutes ago</small>
+      </h1>
 
       <div class="nav">
         <div class="form-group form-inline">
@@ -51,4 +54,11 @@
   $('#minutes_old').change(function(){
     window.location = "/listings?minutes_old=" + $(this).val();
   });
+
+  window.setInterval(function(){
+    var min = $('#last_pull');
+    var count = parseInt(min.text);
+    console.log(count);
+    min.text(count + 1);
+  }, 1000);
 </script>

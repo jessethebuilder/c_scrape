@@ -5,10 +5,11 @@ require_relative 'c_scrape/c_pages'
 class CScrape
   INDEX_PAGE = 'https://www.craigslist.org/about/sites'
 
-  def initialize(search_pages: ['search/cpg', 'search/web'], search_depth: 20, regions: [:us],
+  def initialize(search_pages: ['search/cpg', 'search/web', 'search/sof'], search_depth: 20, regions: [:us],
                    include_expressions: [/web developer/, /ruby on rails/, /web ?site/,
                                       /word ?press/, /scraping/, /mining/, /ruby/,
-                                      /excel/, /angular/, /web ?design/, /front.?end/, /java.?script/],
+                                      /excel/, /angular/, /web ?design/, /front.?end/, /java.?script/,
+                                      /intern/],
                   exclude_expressions: [/survey/, /partner/])
     # max search depth is 100, as that is max number of results per page
     set_ghost
