@@ -11,4 +11,5 @@ class Listing
   field :location, type: String
   field :seen, type: Boolean, default: false
   field :visited, type: Boolean, default: false
+  field :hood, type: String
 end

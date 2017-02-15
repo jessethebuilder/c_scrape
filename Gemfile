@@ -34,6 +34,8 @@ gem 'mongoid'
 
 gem 'bootstrap-sass'
 
+gem 'kaminari'
+
 gem 'farm_ruby', git: 'https://github.com/jessethebuilder/farm_ruby'
 gem 'farm_scrape', git: 'https://github.com/jessethebuilder/farm_scrape.git'
 

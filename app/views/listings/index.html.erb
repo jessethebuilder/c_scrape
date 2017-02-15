@@ -2,18 +2,18 @@
   <div class="row">
     <div class="col-xs-12">
       <h1>
-        Listings:  <strong><%= @listings.count %></strong>
+        Listing count:  <strong><%= @listings.count %></strong>
         <small>last pull: <strong id="last_pull">0</strong> minutes ago</small>
       </h1>
 
       <div class="nav">
         <div class="form-group form-inline">
           <label for="minutes_old" class="control-label">Minutes old: </label>
-          <input id="minutes_old" type="text" class="form-control">
+          <input id="minutes_old" type="text" class="form-control" value="<%= params[:minutes_old] %>">
         </div>
-        <%= link_to "Unseen", listings_path %>
+        <!-- <%= link_to "Unseen", listings_path %>
         <%= link_to "All", listings_path(all: true) %>
-        <%= link_to "Unvisited", listings_path(search: 'visited,false') %>
+        <%= link_to "Unvisited", listings_path(search: 'visited,false') %> -->
       </div>
 
       <table class="table table-striped">
@@ -24,6 +24,7 @@
             <th>Location</th>
             <th>State</th>
             <th>Text</th>
+            <th>Hood</th>
             <th></th>
             <th>Search</th>
             <th>Visited</th>
@@ -33,32 +34,42 @@
         <tbody>
           <% t = Time.now %>
           <% @listings.each do |l| %>
-            <tr>
+            <%= content_tag :tr, class: "#{'visited' if l.visited}" do %>
               <td><%= Integer((t - l.created_at) / 60) %></td>
               <td><%= l.search_page %></td>
               <td><%= l.location.titlecase %></td>
               <td><%= l.state %></td>
               <td><%= l.text %></td>
+              <td><%= l.hood %></td>
               <td><%= link_to 'go', l, target: '_blank', class: 'btn btn-primary' %></td>
               <td><%= l.search %></td>
               <td><%= l.visited %></td>
-            </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="pagination">
+        <%= paginate @listings %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-  $('#minutes_old').change(function(){
+  $('#minutes_old').blur(function(){
     window.location = "/listings?minutes_old=" + $(this).val();
   });
 
+  var count = 0;
+  var min = $('#last_pull');
+
   window.setInterval(function(){
-    var min = $('#last_pull');
-    var count = parseInt(min.text);
-    console.log(count);
-    min.text(count + 1);
-  }, 1000);
+    min.text(count);
+    count = count + 1;
+  }, 1000*60);
 </script>

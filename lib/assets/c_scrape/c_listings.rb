@@ -4,14 +4,14 @@ class CScrape
 
   def create_listing(listing, search_page, region, state, location)
     l = Listing.new
-    [:url, :text, :search].each do |attr|
+    [:url, :text, :search, :hood].each do |attr|
       l.send("#{attr}=", listing[attr])
     end
     l.search_page = search_page
     l.region = region
     l.state = state
     l.location = location
-    # announce_listing(l)
+    announce_listing(l)
     l.save
   end
 
@@ -29,12 +29,16 @@ class CScrape
       link = row.find('.result-title')
       h[:url] = link['href']
       h[:text] = link.text.downcase
+      begin
+        hood = row.find('.result-hood')
+      rescue => e
+      end
+      h[:hood] = hood.text.gsub(/[()]/, '') if hood
 
       a << h
     end
     a
   end
-
 
   def clean_listings(listings)
     clean = listings.map{ |listing| clean_listing(listing) }
