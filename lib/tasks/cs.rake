@@ -9,10 +9,9 @@ namespace :cs do
                     [/web developer/, /ruby on rails/, /web ?site/,
                      /word ?press/, /scraping/, /mining/, /ruby/,
                      /excel/, /angular/, /web ?design/, /front.?end/, /java.?script/,
-                     /square ?space/],
+                     /square ?space/], 
                     exclude_expressions: [/survey/, /partner/, /intern/],
-                    search_depth: 20,
-                    regions: ['us'])
+                    search_depth: 20)
     c.exec
 
     puts "CS Complete in #{Time.now - t} seconds."

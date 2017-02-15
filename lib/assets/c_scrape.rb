@@ -38,6 +38,11 @@ class CScrape
 
   def walk_regions
     @search_pages.each do |search_page|
+      puts '......................................................'
+      puts '......................................................'
+      puts search_page
+      puts '......................................................'
+      puts '......................................................'
       @regions.each do |region_name, states|
         states.each do |state_name, locations|
           if @states.nil? || @states.include?(state_name)
