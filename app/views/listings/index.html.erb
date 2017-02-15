@@ -3,14 +3,14 @@
     <div class="col-xs-12">
       <h1>
         Listing count:  <strong><%= @listings.count %></strong>
-        <!-- <small>last pull: <strong id="last_pull">0</strong> minutes ago</small> -->
+        <small>last pull: <strong id="last_pull">0</strong> minutes ago</small>
       </h1>
 
       <div class="nav">
-        <div class="form-group form-inline">
+        <!-- <div class="form-group form-inline">
           <label for="minutes_old" class="control-label">Minutes old: </label>
           <input id="minutes_old" type="text" class="form-control" value="<%= params[:minutes_old] %>">
-        </div>
+        </div> -->
         <!-- <%= link_to "Unseen", listings_path %>
         <%= link_to "All", listings_path(all: true) %>
         <%= link_to "Unvisited", listings_path(search: 'visited,false') %> -->
@@ -69,7 +69,8 @@
   // var min = $('#last_pull');
 
   window.setInterval(function(){
-    $('#minutes_old').val(count);
+    // $('#minutes_old').val(count);
+    $('#last_pull').text(count);
     count = count + 1;
   }, 1000*60);
 </script>
