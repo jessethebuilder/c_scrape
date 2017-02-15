@@ -38,17 +38,18 @@ class CScrape
 
   def walk_regions
     @search_pages.each do |search_page|
-      puts '......................................................'
-      puts '......................................................'
-      puts search_page
-      puts '......................................................'
-      puts '......................................................'
       @regions.each do |region_name, states|
         states.each do |state_name, locations|
           if @states.nil? || @states.include?(state_name)
             locations.each do |location_name, url|
               if @locations.nil? || @locations.include?(location_name)
+
                 clean_listings(get_listings(url + search_page)).each do |listing|
+                  puts '......................................................'
+                  puts '......................................................'
+                  puts listing
+                  puts '......................................................'
+                  puts '......................................................'
                   create_listing(listing, search_page, region_name, state_name, location_name)
                 end
               end
