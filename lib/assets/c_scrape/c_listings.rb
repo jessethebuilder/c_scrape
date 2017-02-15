@@ -29,11 +29,11 @@ class CScrape
       link = row.find('.result-title')
       h[:url] = link['href']
       h[:text] = link.text.downcase
-      begin
+
+      if row.has_css?('.result-hood')
         hood = row.find('.result-hood')
-      rescue => e
+        h[:hood] = hood.text.gsub(/[()]/, '') 
       end
-      h[:hood] = hood.text.gsub(/[()]/, '') if hood
 
       a << h
     end
