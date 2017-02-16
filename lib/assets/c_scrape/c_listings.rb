@@ -65,7 +65,7 @@ class CScrape
   def listing_is_included?(listing)
     @include_experessions.each do |exp|
       listing[:search] = exp.to_s
-      return true if exp =~ listing[:text]
+      return true if exp =~ listing[:text].downcase
     end
 
     false
