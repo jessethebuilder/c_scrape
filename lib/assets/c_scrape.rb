@@ -5,7 +5,7 @@ require_relative 'c_scrape/c_pages'
 class CScrape
   INDEX_PAGE = 'https://www.craigslist.org/about/sites'
 
-  def initialize(search_pages, include_expressions, search_depth: 30, regions: [:us],
+  def initialize(search_pages, include_expressions, search_depth: 20, regions: [:us],
                   exclude_expressions: [], states: nil, locations: nil)
     # max search depth is 100, as that is max number of results per page
     set_ghost
@@ -37,19 +37,19 @@ class CScrape
   private
 
   def walk_regions
-    @search_pages.each do |search_page|
-      @regions.each do |region_name, states|
-        states.each do |state_name, locations|
-          if @states.nil? || @states.include?(state_name)
+    @regions.each do |region_name, states|
+      states.each do |state_name, locations|
+        if @states.nil? || @states.include?(state_name)
+          @search_pages.each do |search_page|
             locations.each do |location_name, url|
               if @locations.nil? || @locations.include?(location_name)
 
                 clean_listings(get_listings(url + search_page)).each do |listing|
-                  puts '......................................................'
-                  puts '......................................................'
-                  puts listing
-                  puts '......................................................'
-                  puts '......................................................'
+                  # puts '......................................................'
+                  # puts '......................................................'
+                  # puts listing
+                  # puts '......................................................'
+                  # puts '......................................................'
                   create_listing(listing, search_page, region_name, state_name, location_name)
                 end
               end
