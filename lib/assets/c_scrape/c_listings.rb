@@ -47,8 +47,7 @@ class CScrape
   end
 
   def clean_listing(listing)
-    listing if !listing_is_excluded?(listing) && listing_is_included?(listing)
-    # listing if !listing_exists?(listing) && !listing_is_excluded?(listing) && listing_is_included?(listing)
+    listing if !listing_exists?(listing) && !listing_is_excluded?(listing) && listing_is_included?(listing)
   end
 
   def listing_exists?(listing)
