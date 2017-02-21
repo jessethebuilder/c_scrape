@@ -19,15 +19,14 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Minutes ago</th>
-            <th>Page</th>
-            <th>Location</th>
+            <th>Age</th>
+            <th class="hidden-xs">Location</th>
             <th>State</th>
             <th>Text</th>
             <th>Hood</th>
             <th></th>
-            <th>Search</th>
-            <th>Visited</th>
+            <th class="hidden-xs">Page</th>
+            <th class="hidden-xs">Search</th>
           </tr>
         </thead>
 
@@ -36,14 +35,13 @@
           <% @listings.each do |l| %>
             <%= content_tag :tr, class: "#{'visited' if l.visited}" do %>
               <td><%= Integer((t - l.created_at) / 60) %></td>
-              <td><%= l.search_page %></td>
-              <td><%= l.location.titlecase %></td>
+              <td class="hidden-xs"><%= l.location.titlecase %></td>
               <td><%= l.state %></td>
               <td><%= l.text %></td>
               <td><%= l.hood %></td>
               <td><%= link_to 'go', l, target: '_blank', class: 'btn btn-primary' %></td>
-              <td><%= l.search %></td>
-              <td><%= l.visited %></td>
+              <td class="hidden-xs"><%= l.search_page %></td>
+              <td class="hidden-xs"><%= l.search %></td>
             <% end %>
           <% end %>
         </tbody>
