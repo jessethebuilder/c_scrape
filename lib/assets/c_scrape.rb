@@ -6,7 +6,7 @@ class CScrape
   INDEX_PAGE = 'https://www.craigslist.org/about/sites'
 
   def initialize(search_pages, include_expressions, search_depth: 20, regions: [:us],
-                  exclude_expressions: [], states: nil, locations: nil)
+                 exclude_expressions: [], states: nil, locations: nil)
     # max search depth is 100, as that is max number of results per page
     set_ghost
 
