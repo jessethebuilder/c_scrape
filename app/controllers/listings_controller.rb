@@ -15,7 +15,20 @@ class ListingsController < ApplicationController
     #
     # @listings.each{ |l| l.update(seen: true) }
 
-    @listings = Listing.all.order(created_at: :desc).page(params[:page]).per(50)
+    listings = Listing.all.order(created_at: :desc).page(params[:page]).per(50)
+    @listings = []
+    urls = []
+
+    listings.each do |l|
+      url = l.url
+      unless urls.include?(url)
+        @listings << l
+      end
+
+      urls << url
+    end
+
+    @listings = Kaminari.paginate_array(@listings).page(params[:page]).per(100)
   end
 
   def show
