@@ -5,7 +5,7 @@ namespace :cs do
   task :scrape => :environment do
     t = Time.now
     everything is gmt.
-    h = time.hour - 7
+    h = time.hour - 8
 
     pass = Rails.env.production? ? ((10..24).member?(h) || (0..3).member(h)) : true
     if pass
