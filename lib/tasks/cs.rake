@@ -7,7 +7,7 @@ namespace :cs do
     # everything is gmt.
     h = t.hour - 8
 
-    pass = Rails.env.production? ? ((10..24).member?(h) || (0..3).member(h)) : true
+    pass = Rails.env.production? ? ((10..24).member?(h) || (0..3).member?(h)) : true
     if pass
       puts 'CS Start....................................'
       c = CScrape.new(['search/cpg', 'search/web', 'search/sof'],
