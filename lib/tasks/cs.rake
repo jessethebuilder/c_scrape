@@ -5,9 +5,9 @@ namespace :cs do
   task :scrape => :environment do
     t = Time.now
     # everything is gmt.
-    h = t.hour - 8
+    h = t.hour
 
-    pass = Rails.env.production? ? ((10..24).member?(h) || (0..3).member?(h)) : true
+    pass = Rails.env.production? ? ((0..11).member?(h) || (18..24).member?(h)) : true
     if pass
       puts 'CS Start....................................'
       c = CScrape.new(['search/cpg', 'search/web', 'search/sof'],
