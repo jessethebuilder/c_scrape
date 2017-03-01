@@ -14,7 +14,7 @@ namespace :cs do
                       [/web developer/i, /ruby on rails/i, /web ?site/i,
                        /word ?press/i, /scraping/i, /mining/i, /ruby/i,
                        /excel/i, /angular/i, /web ?design/i, /front.?end/i, /java.?script/i,
-                       /square ?space/i, /php/i, /plugin/i],
+                       /square ?space/i, /php/i, /plugin/i, /weebly/i],
                       exclude_expressions: [/survey/i, /partner/i, /intern/i],
                       search_depth: 30)
       c.exec
