@@ -3,11 +3,11 @@ require 'assets/c_scrape'
 namespace :cs do
   desc "Scrape"
   task :scrape => :environment do
+    # everything is UTC.
     t = Time.now
-    # everything is gmt.
     h = t.hour
 
-    pass = Rails.env.production? ? ((0..11).member?(h) || (18..24).member?(h)) : true
+    pass = Rails.env.production? ? ((0..6).member?(h) || (17..24).member?(h)) : true
     if pass
       puts 'CS Start....................................'
       c = CScrape.new(['search/cpg', 'search/web', 'search/sof'],
