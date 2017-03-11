@@ -1,15 +1,12 @@
 require 'assets/c_scrape'
 
+require Rails.root.to_s + '/app/helpers/hal_helper'
+include HalHelper
+
 namespace :cs do
   desc "Scrape"
   task :scrape => :environment do
-    # everything is UTC.
-    t = Time.now
-    h = t.hour
-
-    # pass = Rails.env.production? ? ((0..6).member?(h) || (17..24).member?(h)) : true
-    pass = true
-    if pass
+    if hal.on
       puts 'CS Start....................................'
       c = CScrape.new(['search/cpg', 'search/web', 'search/sof'],
                       [/web developer/i, /ruby on rails/i, /web ?site/i,

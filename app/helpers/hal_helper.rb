@@ -1,4 +1,4 @@
-module ApplicationHelper
+module HalHelper
   def hal
     Hal.first || Hal.create!
   end

@@ -17,6 +17,8 @@ class ListingsController < ApplicationController
 
     @listings = Listing.all.order(created_at: :desc).page(params[:page]).per(50)
 
+    @hal = hal
+
   end
 
   def show

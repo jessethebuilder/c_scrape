@@ -1,4 +1,28 @@
+<style>
+  .checkbox{
+    /*font-size: 40px;*/
+    float: right;
+  }
+</style>
+
 <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="hal">
+        <%= form_for @hal do |f| %>
+          <div class="form-group">
+            <div class="checkbox">
+              <label class="control-label">
+                <%= f.check_box :on %>
+                Active?
+              </label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-xs-12">
       <h1>
@@ -15,6 +39,7 @@
         <%= link_to "All", listings_path(all: true) %>
         <%= link_to "Unvisited", listings_path(search: 'visited,false') %> -->
       </div>
+
 
       <table class="table table-striped">
         <thead>
@@ -57,6 +82,12 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('#hal_on').change(function(){
+    $(this).closest('form').submit();
+  });
+</script>
 
 <script>
   $('#minutes_old').blur(function(){
