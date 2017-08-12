@@ -102,12 +102,12 @@
     window.location = "/listings?minutes_old=" + $(this).val();
   });
 
-  // var count = 0;
-  // // var min = $('#last_pull');
-  //
-  // window.setInterval(function(){
-  //   // $('#minutes_old').val(count);
-  //   $('#last_pull').text(count);
-  //   count = count + 1;
-  // }, 1000*60);
+  var count = 0;
+  // var min = $('#last_pull');
+
+  window.setInterval(function(){
+    // $('#minutes_old').val(count);
+    $('#last_pull').text(count);
+    count = count + 1;
+  }, 1000*60);
 </script>
