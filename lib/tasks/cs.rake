@@ -9,10 +9,10 @@ namespace :cs do
     if hal.on
       puts 'CS Start....................................'
       c = CScrape.new(['search/cpg', 'search/web', 'search/sof'],
-                      [/web developer/i, /ruby on rails/i, /web ?site/i,
-                       /word ?press/i, /scraping/i, /mining/i, /ruby/i,
-                       /excel/i, /angular/i, /web ?design/i, /front.?end/i, /java.?script/i,
-                       /square ?space/i, /php/i, /plugin/i, /weebly/i],
+                      [/web developer/i, /ruby ?on ?rails/i, /web ?site/i,
+                       /word ?press/i, /scraping/i, /data ?mining/i, /ruby/i,
+                       /excel/i, /angular/i, /front ?end/i, /java ?script/i,
+                       /php/i, /plugin/i, /elixir/i],
                       exclude_expressions: [/survey/i, /partner/i, /intern/i],
                       search_depth: 30)
       c.exec
