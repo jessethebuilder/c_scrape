@@ -1,20 +1,5 @@
 class ListingsController < ApplicationController
   def index
-    # listings = Listing.all.order(created_at: :desc).page(params[:page]).per(50)
-    # @listings = []
-    # urls = []
-    #
-    # listings.each do |l|
-    #   url = l.url
-    #   unless urls.include?(url)
-    #     @listings << l
-    #   end
-    #
-    #   urls << url
-    # end
-    #
-    # @listings = Kaminari.paginate_array(@listings).page(params[:page]).per(100)
-
     @listings = Listing.order(created_at: :desc).page(params[:page]).per(1000)
 
     @hal = hal
