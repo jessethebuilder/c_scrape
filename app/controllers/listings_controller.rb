@@ -15,10 +15,9 @@ class ListingsController < ApplicationController
     #
     # @listings = Kaminari.paginate_array(@listings).page(params[:page]).per(100)
 
-    @listings = Listing.all.order(created_at: :desc).page(params[:page]).per(50)
+    @listings = Listing.order(created_at: :desc).page(params[:page]).per(1000)
 
     @hal = hal
-
   end
 
   def show
