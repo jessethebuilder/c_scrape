@@ -6,7 +6,7 @@ include HalHelper
 namespace :cs do
   desc "Scrape"
   task :scrape => :environment do
-    while hal.on do
+    # while hal.on do
       puts 'CS Start....................................'
       c = CScrape.new(['search/cpg', 'search/web', 'search/sof'],
                       [/web developer/i, /ruby ?on ?rails/i, /web ?site/i,
@@ -18,9 +18,8 @@ namespace :cs do
       c.exec
 
       puts "CS Complete in #{Time.now - t} seconds."
-
-      sleep 5 * 60
-    end
+      # sleep 5 * 60
+    # end
   end
 
   task :s => :scrape

@@ -20,6 +20,9 @@ class CScrape
   end
 
   def get_listings(url)
+    puts '...................'
+    puts url
+    puts '...................'
     @ghost.goto url
     rows = @ghost.page.find_all('.result-row')[0..@search_depth]
 

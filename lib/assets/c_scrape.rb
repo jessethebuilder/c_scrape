@@ -45,11 +45,6 @@ class CScrape
               if @locations.nil? || @locations.include?(location_name)
 
                 clean_listings(get_listings(url + search_page)).each do |listing|
-                  # puts '......................................................'
-                  # puts '......................................................'
-                  # puts listing
-                  # puts '......................................................'
-                  # puts '......................................................'
                   create_listing(listing, search_page, region_name, state_name, location_name)
                 end
               end
